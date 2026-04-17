@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #98268d, #fad0c4);
+    text-align: center;
+}
+
+/* CONTAINER */
+.container {
+    margin-top: 50px;
+}
+
+/* VIDEO */
+video {
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* CARD */
+.card {
+    margin-top: 20px;
+    display: inline-block;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* JUDUL */
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: #c01d69;
+}
+
+/* TYPING */
+#typing {
+    color: #555;
+    min-height: 50px;
+}
+
+/* BUTTON */
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #9e1663;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* POPUP */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+/* CONFETTI */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIK -->
+<audio autoplay loop>
+    <source src="mp3.rony.parulian.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+    <!-- VIDEO TENGAH -->
+    <video controls autoplay loop muted>
+        <source src="kompilasi.tia.mp4" type="video/mp4">
+    </video>
+
+    <div class="card">
+        <h1>🎉 Happy Birthday TIA.. 💖</h1>
+        <p id="typing"></p>
+
+        <button onclick="showPopup()">Klik Surprise 🎁</button>
+    </div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <h2>💌 Surprise!</h2>
+        <p>Kelakuanmu seplenger mukamu, but u're the one and only 💖✨</p>
+        <button onclick="closePopup()">Tutup</button>
+    </div>
+</div>
+
+<script>
+// Typing
+const text = "Selamat ulang tahun ya efeeet 💖 Semoga panjang umur, sehat selalu, semua impian kamu tercapai dan yap..cepat-cepatlah kau cari pacar 🎂✨";
+let i = 0;
+
+function ketik() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(ketik, 50);
+    }
+}
+ketik();
+
+// Popup
+function showPopup() {
+    document.getElementById("popup").style.display = "flex";
+}
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+// Confetti
+for (let i = 0; i < 40; i++) {
+    let confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.background = `hsl(${Math.random()*360},100%,50%)`;
+    confetti.style.animationDuration = (Math.random()*3 + 2) + "s";
+    document.body.appendChild(confetti);
+}
+</script>
+
+</body>
+</html>
